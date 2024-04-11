@@ -1,5 +1,3 @@
-#main code
-
 import pickle
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
@@ -8,10 +6,10 @@ from sklearn.metrics import accuracy_score
 
 data_dict = pickle.load(open('D:\SignLanguageProject\SILT\data.pickle','rb'))
 
-# Determine the maximum length of the lists in the data array
+# Determining the maximum length of the lists in the data array
 max_length = max(len(sample) for sample in data_dict['data'])
 
-# Pad or truncate each list to the maximum length
+#Padding of each list to the maximum length
 data_padded = [sample + [0] * (max_length - len(sample)) for sample in data_dict['data']]
 
 data = np.asarray(data_padded)

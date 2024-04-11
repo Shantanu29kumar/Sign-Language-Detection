@@ -37,7 +37,6 @@ while True:
             )
 
             for landmark in hand_landmarks.landmark:
-                # Append (x, y) coordinates four times
                 x_.append(landmark.x)
                 y_.append(landmark.y)
 
@@ -48,15 +47,14 @@ while True:
             x2 = int(max(x_) * W)
             y2 = int(max(y_) * H)
 
-            if len(x_) == len(y_) == 21:  # Ensure we have exactly 21 landmarks
+            if len(x_) == len(y_) == 21:
                 for landmark in hand_landmarks.landmark:
-                    # Append (x, y) coordinates four times
                     data_aux.append(landmark.x)
                     data_aux.append(landmark.y)
                     data_aux.append(landmark.x)
                     data_aux.append(landmark.y)
 
-                # Make prediction if data_aux has exactly 84 features
+                # Making prediction if data_aux has exactly 84 features
                 if len(data_aux) == 84:
                     prediction = model.predict([np.asarray(data_aux)])
                     print("Predicted label:", prediction)
